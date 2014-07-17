@@ -1,0 +1,25 @@
+{
+    "name": "desmart/uniqush-client",
+    "description": "Uniqush API Client",
+    "require": {
+        "guzzle/http": "3.9.*"
+    },
+    "require-dev": {
+        "phpspec/phpspec": "2.0.*"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-0": {
+            "DeSmart": "src"
+        }
+    },
+    "authors": [
+        {
+            "name": "Radoslaw Mejer",
+            "email": "radmen@desmart.com"
+        }
+    ],
+    "config": {
+        "bin-dir": "bin"
+    }
+}
