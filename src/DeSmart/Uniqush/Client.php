@@ -28,13 +28,15 @@ class Client
             $subscriber = join(',', $subscriber);
         }
 
-        $this->http->get('/push', array(), array(
+        $request = $this->http->get('/push', array(), array(
             'query' => array(
                 'service' => $serviceName,
                 'subscriber' => $subscriber,
                 'msg' => $message,
             ),
         ));
+
+        $this->http->send($request);
 
         return true;
     }

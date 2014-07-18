@@ -3,8 +3,9 @@
 namespace spec\DeSmart\Uniqush;
 
 use Prophecy\Argument;
-use Guzzle\Http\Client as HttpClient;
 use PhpSpec\ObjectBehavior;
+use Guzzle\Http\Client as HttpClient;
+use Guzzle\Http\Message\RequestInterface;
 
 class ClientSpec extends ObjectBehavior
 {
@@ -20,7 +21,7 @@ class ClientSpec extends ObjectBehavior
         $this->shouldHaveType('DeSmart\Uniqush\Client');
     }
 
-    function it_sends_push_message(HttpClient $http)
+    function it_sends_push_message(HttpClient $http, RequestInterface $request)
     {
         $service = 'test';
         $subscriber = 'foo';
@@ -29,13 +30,16 @@ class ClientSpec extends ObjectBehavior
         $http->get('/push', array(), array(
                 'query' => compact('service', 'subscriber', 'msg'),
             ))
-            ->shouldBeCalled();
+            ->shouldBeCalled()
+            ->willReturn($request);
+
+        $http->send($request)->shouldBeCalled();
 
         $this->push($service, $msg, $subscriber)
             ->shouldReturn(true);
     }
 
-    function it_sends_push_message_to_many(HttpClient $http)
+    function it_sends_push_message_to_many(HttpClient $http, RequestInterface $request)
     {
         $service = 'test';
         $subscriber = array('foo', 'bar');
@@ -48,7 +52,10 @@ class ClientSpec extends ObjectBehavior
                     'subscriber' => 'foo,bar',
                 )
             ))
-            ->shouldBeCalled();
+            ->shouldBeCalled()
+            ->willReturn($request);
+
+        $http->send($request)->shouldBeCalled();
 
         $this->push($service, $msg, $subscriber)
             ->shouldReturn(true);
