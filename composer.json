@@ -5,7 +5,8 @@
         "guzzle/http": "3.9.*"
     },
     "require-dev": {
-        "phpspec/phpspec": "2.0.*"
+        "phpspec/phpspec": "2.0.*",
+        "squizlabs/php_codesniffer": "@stable"
     },
     "license": "MIT",
     "autoload": {
