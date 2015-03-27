@@ -1,0 +1,4 @@
+suites:
+    test_suite:
+        namespace: DeSmart\Uniqush
+        psr4_prefix: DeSmart\Uniqush
