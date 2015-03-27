@@ -5,15 +5,15 @@ use DeSmart\Uniqush\Request\RequestInterface;
 class SubscribeGcmDevice implements RequestInterface
 {
 
-    protected $service;
+    protected $serviceName;
 
     protected $subscriber;
 
     protected $regId;
 
-    public function __construct($service, $subscriber, $regId)
+    public function __construct($serviceName, $subscriber, $regId)
     {
-        $this->service = $service;
+        $this->serviceName = $serviceName;
         $this->subscriber = $subscriber;
         $this->regId = $regId;
     }
