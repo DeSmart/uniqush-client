@@ -5,7 +5,7 @@ namespace spec\DeSmart\Uniqush\Request\RmPsp;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
-class RmGcmPspSpec extends ObjectBehavior
+class RmGcmPspRequestSpec extends ObjectBehavior
 {
 
     function let()
@@ -15,7 +15,7 @@ class RmGcmPspSpec extends ObjectBehavior
 
     function it_is_initializable()
     {
-        $this->shouldHaveType('DeSmart\Uniqush\Request\RmPsp\RmGcmPsp');
+        $this->shouldHaveType('DeSmart\Uniqush\Request\RmPsp\RmGcmPspRequest');
         $this->shouldImplement('DeSmart\Uniqush\Request\RequestInterface');
     }
 

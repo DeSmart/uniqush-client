@@ -2,7 +2,7 @@
 
 use DeSmart\Uniqush\Request\RequestInterface;
 
-class UnsubscribeGcmDevice implements RequestInterface
+class UnsubscribeGcmDeviceRequest implements RequestInterface
 {
 
     protected $service;

@@ -5,7 +5,7 @@ namespace spec\DeSmart\Uniqush\Request\Unsubscribe;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
-class UnsubscribeGcmDeviceSpec extends ObjectBehavior
+class UnsubscribeGcmDeviceRequestSpec extends ObjectBehavior
 {
 
     function let()
@@ -15,7 +15,7 @@ class UnsubscribeGcmDeviceSpec extends ObjectBehavior
 
     function it_is_initializable()
     {
-        $this->shouldHaveType('DeSmart\Uniqush\Request\Unsubscribe\UnsubscribeGcmDevice');
+        $this->shouldHaveType('DeSmart\Uniqush\Request\Unsubscribe\UnsubscribeGcmDeviceRequest');
         $this->shouldImplement('DeSmart\Uniqush\Request\RequestInterface');
     }
 

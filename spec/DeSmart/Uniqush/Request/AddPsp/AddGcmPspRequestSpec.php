@@ -1,36 +1,36 @@
 <?php
 
-namespace spec\DeSmart\Uniqush\Request\Subscribe;
+namespace spec\DeSmart\Uniqush\Request\AddPsp;
 
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
-class SubscribeGcmDeviceSpec extends ObjectBehavior
+class AddGcmPspRequestSpec extends ObjectBehavior
 {
 
     function let()
     {
-        $this->beConstructedWith('test', 'john', '123');
+        $this->beConstructedWith('test', '123', 'qwe');
     }
 
     function it_is_initializable()
     {
-        $this->shouldHaveType('DeSmart\Uniqush\Request\Subscribe\SubscribeGcmDevice');
+        $this->shouldHaveType('DeSmart\Uniqush\Request\AddPsp\AddGcmPspRequest');
         $this->shouldImplement('DeSmart\Uniqush\Request\RequestInterface');
     }
 
     function it_returns_valid_url()
     {
-        $this->getUrl()->shouldReturn('/subscribe');
+        $this->getUrl()->shouldReturn('/addpsp');
     }
 
     function it_returns_query()
     {
         $this->getQuery()->shouldReturn(array(
             'service' => 'test',
-            'subscriber' => 'john',
             'pushservicetype' => 'gcm',
-            'regid' => '123',
+            'projectid' => '123',
+            'apikey' => 'qwe',
         ));
     }
 }

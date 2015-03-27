@@ -1,23 +1,26 @@
-<?php namespace DeSmart\Uniqush\Request\RmPsp;
+<?php namespace DeSmart\Uniqush\Request\AddPsp;
 
 use DeSmart\Uniqush\Request\RequestInterface;
 
-class RmGcmPsp implements RequestInterface
+class AddGcmPspRequest implements RequestInterface
 {
 
     protected $serviceName;
 
     protected $projectId;
 
-    public function __construct($serviceName, $projectId)
+    protected $apiKey;
+
+    public function __construct($serviceName, $projectId, $apiKey)
     {
         $this->serviceName = $serviceName;
         $this->projectId = $projectId;
+        $this->apiKey = $apiKey;
     }
 
     public function getUrl()
     {
-        return '/rmpsp';
+        return '/addpsp';
     }
 
     public function getQuery()
@@ -26,6 +29,7 @@ class RmGcmPsp implements RequestInterface
             'service' => $this->serviceName,
             'pushservicetype' => 'gcm',
             'projectid' => $this->projectId,
+            'apikey' => $this->apiKey,
         );
     }
 }

@@ -1,6 +1,6 @@
 <?php namespace DeSmart\Uniqush\Request;
 
-class Push implements RequestInterface
+class PushRequest implements RequestInterface
 {
 
     protected $serviceName;

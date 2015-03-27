@@ -5,7 +5,7 @@ namespace spec\DeSmart\Uniqush\Request;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
-class PushSpec extends ObjectBehavior
+class PushRequestSpec extends ObjectBehavior
 {
 
     function let()
@@ -15,7 +15,7 @@ class PushSpec extends ObjectBehavior
 
     function it_is_initializable()
     {
-        $this->shouldHaveType('DeSmart\Uniqush\Request\Push');
+        $this->shouldHaveType('DeSmart\Uniqush\Request\PushRequest');
         $this->shouldImplement('DeSmart\Uniqush\Request\RequestInterface');
     }
 

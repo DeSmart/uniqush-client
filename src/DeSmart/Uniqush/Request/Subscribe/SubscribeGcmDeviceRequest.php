@@ -2,7 +2,7 @@
 
 use DeSmart\Uniqush\Request\RequestInterface;
 
-class SubscribeGcmDevice implements RequestInterface
+class SubscribeGcmDeviceRequest implements RequestInterface
 {
 
     protected $serviceName;
