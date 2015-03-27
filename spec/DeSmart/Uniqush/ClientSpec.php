@@ -4,8 +4,10 @@ namespace spec\DeSmart\Uniqush;
 
 use Prophecy\Argument;
 use PhpSpec\ObjectBehavior;
+use Guzzle\Http\EntityBodyInterface;
 use Guzzle\Http\Client as HttpClient;
 use Guzzle\Http\Message\RequestInterface;
+use DeSmart\Uniqush\Request\RequestInterface as UniqushRequest;
 
 class ClientSpec extends ObjectBehavior
 {
@@ -16,48 +18,23 @@ class ClientSpec extends ObjectBehavior
         $http->setBaseUrl($url)->shouldBeCalled();
     }
 
-    function it_is_initializable()
+    function it_sends_requests(HttpClient $http, UniqushRequest $uniqushRequest, RequestInterface $request, EntityBodyInterface $responseBody)
     {
-        $this->shouldHaveType('DeSmart\Uniqush\Client');
-    }
+        $uniqushRequest->getUrl()->willReturn('/push');
+        $uniqushRequest->getQuery()->willReturn($query = array(
+            'service' => 'test',
+            'subscriber' => 'foo',
+            'msg' => 'bar',
+        ));
 
-    function it_sends_push_message(HttpClient $http, RequestInterface $request)
-    {
-        $service = 'test';
-        $subscriber = 'foo';
-        $msg = 'simple message';
-
-        $http->get('/push', array(), array(
-                'query' => compact('service', 'subscriber', 'msg'),
-            ))
-            ->shouldBeCalled()
+        $http->get('/push', array(), $query)->shouldBeCalled()
             ->willReturn($request);
 
-        $http->send($request)->shouldBeCalled();
+        $http->send($request)->shouldBeCalled()
+            ->willReturn($responseBody);
 
-        $this->push($service, $msg, $subscriber)
-            ->shouldReturn(true);
-    }
+        $responseBody->__toString()->willReturn('OK');
 
-    function it_sends_push_message_to_many(HttpClient $http, RequestInterface $request)
-    {
-        $service = 'test';
-        $subscriber = array('foo', 'bar');
-        $msg = 'simple message';
-
-        $http->get('/push', array(), array(
-                'query' => array(
-                    'service' => $service,
-                    'msg' => $msg,
-                    'subscriber' => 'foo,bar',
-                )
-            ))
-            ->shouldBeCalled()
-            ->willReturn($request);
-
-        $http->send($request)->shouldBeCalled();
-
-        $this->push($service, $msg, $subscriber)
-            ->shouldReturn(true);
+        $this->send($uniqushRequest)->shouldReturn('OK');
     }
 }

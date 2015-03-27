@@ -1,6 +1,7 @@
 <?php namespace DeSmart\Uniqush;
 
 use Guzzle\Http\Client as HttpClient;
+use DeSmart\Uniqush\Request\RequestInterface;
 
 class Client
 {
@@ -14,30 +15,16 @@ class Client
     }
 
     /**
-     * Push message to subscribers
+     * Send request to Uniqush server
      *
-     * @param string $serviceName
-     * @param string $message
-     * @param string|array $subscriber
-     * @return boolean
+     * @param \DeSmart\Uniqush\Request\RequestInterface $request
+     * @return string
      */
-    public function push($serviceName, $message, $subscriber)
+    public function send(RequestInterface $request)
     {
+        $guzzle_request = $this->http->get($request->getUrl(), array(), $request->getQuery());
+        $response = $this->http->send($guzzle_request);
 
-        if (true === is_array($subscriber)) {
-            $subscriber = join(',', $subscriber);
-        }
-
-        $request = $this->http->get('/push', array(), array(
-            'query' => array(
-                'service' => $serviceName,
-                'subscriber' => $subscriber,
-                'msg' => $message,
-            ),
-        ));
-
-        $this->http->send($request);
-
-        return true;
+        return $response->__toString();
     }
 }
