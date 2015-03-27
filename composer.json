@@ -2,7 +2,7 @@
     "name": "desmart/uniqush-client",
     "description": "Uniqush API Client",
     "require": {
-        "guzzle/http": "3.9.*"
+        "guzzle/guzzle": "~3.9"
     },
     "require-dev": {
         "phpspec/phpspec": "2.0.*",
