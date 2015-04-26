@@ -4,9 +4,14 @@ use DeSmart\Uniqush\Request\RequestInterface;
 
 class RmGcmPspRequest implements RequestInterface
 {
-
+    /**
+     * @var string
+     */
     protected $serviceName;
 
+    /**
+     * @var string
+     */
     protected $projectId;
 
     public function __construct($serviceName, $projectId)
@@ -15,11 +20,21 @@ class RmGcmPspRequest implements RequestInterface
         $this->projectId = $projectId;
     }
 
+    /**
+     * Return an url where request will be send.
+     *
+     * @return string
+     */
     public function getUrl()
     {
         return '/rmpsp';
     }
 
+    /**
+     * Return an array with request param.
+     *
+     * @return array
+     */
     public function getQuery()
     {
         return array(

@@ -4,11 +4,19 @@ use DeSmart\Uniqush\Request\RequestInterface;
 
 class AddGcmPspRequest implements RequestInterface
 {
-
+    /**
+     * @var string
+     */
     protected $serviceName;
 
+    /**
+     * @var string
+     */
     protected $projectId;
 
+    /**
+     * @var string
+     */
     protected $apiKey;
 
     public function __construct($serviceName, $projectId, $apiKey)
@@ -18,11 +26,21 @@ class AddGcmPspRequest implements RequestInterface
         $this->apiKey = $apiKey;
     }
 
+    /**
+     * Return an url where request will be send.
+     *
+     * @return string
+     */
     public function getUrl()
     {
         return '/addpsp';
     }
 
+    /**
+     * Return an array with request param.
+     *
+     * @return array
+     */
     public function getQuery()
     {
         return array(

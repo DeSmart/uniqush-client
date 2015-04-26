@@ -2,11 +2,19 @@
 
 class PushRequest implements RequestInterface
 {
-
+    /**
+     * @var string
+     */
     protected $serviceName;
 
+    /**
+     * @var string|array
+     */
     protected $subscriber;
 
+    /**
+     * @var string
+     */
     protected $message;
 
     public function __construct($serviceName, $subscriber)
@@ -15,11 +23,21 @@ class PushRequest implements RequestInterface
         $this->subscriber = $subscriber;
     }
 
+    /**
+     * Return an url where request will be send.
+     *
+     * @return string
+     */
     public function getUrl()
     {
         return '/push';
     }
 
+    /**
+     * Return an array with request param.
+     *
+     * @return array
+     */
     public function getQuery()
     {
         return array(
@@ -29,6 +47,10 @@ class PushRequest implements RequestInterface
         );
     }
 
+    /**
+     * @param string $message
+     * @return void
+     */
     public function setMessage($message)
     {
         $this->message = $message;

@@ -5,7 +5,9 @@ use DeSmart\Uniqush\Request\RequestInterface;
 
 class Client
 {
-
+    /**
+     * @var \Guzzle\Http\Client
+     */
     protected $http;
 
     public function __construct($url, HttpClient $http = null)
