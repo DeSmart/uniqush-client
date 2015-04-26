@@ -1,6 +1,6 @@
 <?php namespace DeSmart\Uniqush\Request\RmPsp;
 
-class RmGcmPspRequest extends AbstractRmPspRequest
+class RmApnsPspRequest extends AbstractRmPspRequest
 {
     /**
      * @var string
@@ -10,12 +10,18 @@ class RmGcmPspRequest extends AbstractRmPspRequest
     /**
      * @var string
      */
-    protected $projectId;
+    protected $cert;
 
-    public function __construct($serviceName, $projectId)
+    /**
+     * @var string
+     */
+    protected $key;
+
+    public function __construct($serviceName, $cert, $key)
     {
         $this->serviceName = $serviceName;
-        $this->projectId = $projectId;
+        $this->cert = $cert;
+        $this->key = $key;
     }
 
     /**
@@ -27,8 +33,9 @@ class RmGcmPspRequest extends AbstractRmPspRequest
     {
         return array(
             'service' => $this->serviceName,
-            'pushservicetype' => 'gcm',
-            'projectid' => $this->projectId,
+            'pushservicetype' => 'apns',
+            'cert' => $this->cert,
+            'key' => $this->key,
         );
     }
 }
