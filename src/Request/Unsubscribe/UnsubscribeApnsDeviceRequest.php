@@ -1,11 +1,11 @@
 <?php namespace DeSmart\Uniqush\Request\Unsubscribe;
 
-class UnsubscribeGcmDeviceRequest extends AbstractUnsubscribeDeviceRequest
+class UnsubscribeApnsDeviceRequest extends AbstractUnsubscribeDeviceRequest
 {
     /**
      * @var string
      */
-    protected $service;
+    protected $serviceName;
 
     /**
      * @var string
@@ -15,13 +15,13 @@ class UnsubscribeGcmDeviceRequest extends AbstractUnsubscribeDeviceRequest
     /**
      * @var string
      */
-    protected $regId;
+    protected $devToken;
 
-    public function __construct($service, $subscriber, $regId)
+    public function __construct($serviceName, $subscriber, $devToken)
     {
-        $this->service = $service;
+        $this->serviceName = $serviceName;
         $this->subscriber = $subscriber;
-        $this->regId = $regId;
+        $this->devToken = $devToken;
     }
 
     /**
@@ -32,10 +32,10 @@ class UnsubscribeGcmDeviceRequest extends AbstractUnsubscribeDeviceRequest
     public function getQuery()
     {
         return array(
-            'service' => $this->service,
+            'service' => $this->serviceName,
             'subscriber' => $this->subscriber,
             'pushservicetype' => 'gcm',
-            'regid' => $this->regId,
+            'devtoken' => $this->devToken,
         );
     }
 }
