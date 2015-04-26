@@ -1,8 +1,6 @@
 <?php namespace DeSmart\Uniqush\Request\AddPsp;
 
-use DeSmart\Uniqush\Request\RequestInterface;
-
-class AddGcmPspRequest implements RequestInterface
+class AddGcmPspRequest extends AbstractAddPspRequest
 {
     /**
      * @var string
@@ -24,16 +22,6 @@ class AddGcmPspRequest implements RequestInterface
         $this->serviceName = $serviceName;
         $this->projectId = $projectId;
         $this->apiKey = $apiKey;
-    }
-
-    /**
-     * Return an url where request will be send.
-     *
-     * @return string
-     */
-    public function getUrl()
-    {
-        return '/addpsp';
     }
 
     /**
