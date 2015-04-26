@@ -26,10 +26,10 @@ class SubscribeGcmDeviceRequest implements RequestInterface
     public function getQuery()
     {
         return array(
-            'service' => 'test',
-            'subscriber' => 'john',
+            'service' => $this->serviceName,
+            'subscriber' => $this->subscriber,
             'pushservicetype' => 'gcm',
-            'regid' => '123',
+            'regid' => $this->regId,
         );
     }
 }
