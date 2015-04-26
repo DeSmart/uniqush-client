@@ -1,6 +1,6 @@
 <?php namespace DeSmart\Uniqush\Request\Subscribe;
 
-class SubscribeGcmDeviceRequest extends AbstractSubscribeDeviceRequest
+class SubscribeApnsDeviceRequest extends AbstractSubscribeDeviceRequest
 {
     /**
      * @var string
@@ -15,13 +15,13 @@ class SubscribeGcmDeviceRequest extends AbstractSubscribeDeviceRequest
     /**
      * @var string
      */
-    protected $regId;
+    protected $devToken;
 
-    public function __construct($serviceName, $subscriber, $regId)
+    public function __construct($serviceName, $subscriber, $devToken)
     {
         $this->serviceName = $serviceName;
         $this->subscriber = $subscriber;
-        $this->regId = $regId;
+        $this->devToken = $devToken;
     }
 
     /**
@@ -35,7 +35,7 @@ class SubscribeGcmDeviceRequest extends AbstractSubscribeDeviceRequest
             'service' => $this->serviceName,
             'subscriber' => $this->subscriber,
             'pushservicetype' => 'gcm',
-            'regid' => $this->regId,
+            'devtoken' => $this->devToken,
         );
     }
 }
