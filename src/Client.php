@@ -24,7 +24,7 @@ class Client
      */
     public function send(RequestInterface $request)
     {
-        $guzzle_request = $this->http->get($request->getUrl(), array(), $request->getQuery());
+        $guzzle_request = $this->http->post($request->getUrl(), array(), $request->getQuery());
         $response = $this->http->send($guzzle_request);
 
         return $response->__toString();

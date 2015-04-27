@@ -27,7 +27,7 @@ class ClientSpec extends ObjectBehavior
             'msg' => 'bar',
         ));
 
-        $http->get('/push', array(), $query)->shouldBeCalled()
+        $http->post('/push', array(), $query)->shouldBeCalled()
             ->willReturn($request);
 
         $http->send($request)->shouldBeCalled()
