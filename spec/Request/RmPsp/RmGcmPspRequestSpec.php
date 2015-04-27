@@ -10,7 +10,7 @@ class RmGcmPspRequestSpec extends ObjectBehavior
 
     function let()
     {
-        $this->beConstructedWith('test', '123');
+        $this->beConstructedWith('test', '123', 'foo');
     }
 
     function it_is_initializable()
@@ -30,6 +30,7 @@ class RmGcmPspRequestSpec extends ObjectBehavior
             'service' => 'test',
             'pushservicetype' => 'gcm',
             'projectid' => '123',
+            'apikey' => 'foo'
         ));
     }
 }

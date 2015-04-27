@@ -12,10 +12,16 @@ class RmGcmPspRequest extends AbstractRmPspRequest
      */
     protected $projectId;
 
-    public function __construct($serviceName, $projectId)
+    /**
+     * @var string
+     */
+    protected $apiKey;
+
+    public function __construct($serviceName, $projectId, $apiKey)
     {
         $this->serviceName = $serviceName;
         $this->projectId = $projectId;
+        $this->apiKey = $apiKey;
     }
 
     /**
@@ -29,6 +35,7 @@ class RmGcmPspRequest extends AbstractRmPspRequest
             'service' => $this->serviceName,
             'pushservicetype' => 'gcm',
             'projectid' => $this->projectId,
+            'apikey' => $this->apiKey,
         );
     }
 }
