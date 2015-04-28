@@ -34,7 +34,7 @@ class SubscribeApnsDeviceRequest extends AbstractSubscribeDeviceRequest
         return array(
             'service' => $this->serviceName,
             'subscriber' => $this->subscriber,
-            'pushservicetype' => 'gcm',
+            'pushservicetype' => 'apns',
             'devtoken' => $this->devToken,
         );
     }

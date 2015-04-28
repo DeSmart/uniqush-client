@@ -29,7 +29,7 @@ class UnsubscribeApnsDeviceRequestSpec extends ObjectBehavior
         $this->getQuery()->shouldReturn(array(
             'service' => 'test',
             'subscriber' => 'john',
-            'pushservicetype' => 'gcm',
+            'pushservicetype' => 'apns',
             'devtoken' => '123',
         ));
     }
