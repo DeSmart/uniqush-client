@@ -46,4 +46,45 @@ class PushRequestSpec extends ObjectBehavior
             'msg' => 'foo',
         ));
     }
+
+    function it_sends_message_to_one_subsciber_with_sound()
+    {
+        $this->setMessage('foo');
+        $this->setSound('default');
+
+        $this->getQuery()->shouldReturn(array(
+            'service' => 'test',
+            'subscriber' => 'john',
+            'msg' => 'foo',
+            'sound' => 'default',
+        ));
+    }
+
+    function it_sends_message_to_one_subsciber_with_user_defined_param()
+    {
+        $this->setMessage('foo');
+        $this->setUserDefinedParam('test_param');
+
+        $this->getQuery()->shouldReturn(array(
+            'service' => 'test',
+            'subscriber' => 'john',
+            'msg' => 'foo',
+            'userdefinedparam' => 'test_param',
+        ));
+    }
+
+    function it_sends_message_to_one_subsciber_with_sound_and_user_defined_param()
+    {
+        $this->setMessage('foo');
+        $this->setSound('default');
+        $this->setUserDefinedParam('test_param');
+
+        $this->getQuery()->shouldReturn(array(
+            'service' => 'test',
+            'subscriber' => 'john',
+            'msg' => 'foo',
+            'sound' => 'default',
+            'userdefinedparam' => 'test_param',
+        ));
+    }
 }

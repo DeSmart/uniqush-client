@@ -17,6 +17,16 @@ class PushRequest implements RequestInterface
      */
     protected $message;
 
+    /**
+     * @var string
+     */
+    protected $sound;
+
+    /**
+     * @var string
+     */
+    protected $userDefinedParam;
+
     public function __construct($serviceName, $subscriber)
     {
         $this->serviceName = $serviceName;
@@ -40,11 +50,21 @@ class PushRequest implements RequestInterface
      */
     public function getQuery()
     {
-        return array(
+        $query = array(
             'service' => $this->serviceName,
             'subscriber' => is_array($this->subscriber) ? join(',', $this->subscriber) : $this->subscriber,
             'msg' => $this->message,
         );
+
+        if (null !== $this->sound) {
+            $query['sound'] = $this->sound;
+        }
+
+        if (null !== $this->userDefinedParam) {
+            $query['userdefinedparam'] = $this->userDefinedParam;
+        }
+
+        return $query;
     }
 
     /**
@@ -54,5 +74,23 @@ class PushRequest implements RequestInterface
     public function setMessage($message)
     {
         $this->message = $message;
+    }
+
+    /**
+     * @param string $sound
+     * @return void
+     */
+    public function setSound($sound)
+    {
+        $this->sound = $sound;
+    }
+
+    /**
+     * @param string $userDefinedParam
+     * @return void
+     */
+    public function setUserDefinedParam($userDefinedParam)
+    {
+        $this->userDefinedParam = $userDefinedParam;
     }
 }
