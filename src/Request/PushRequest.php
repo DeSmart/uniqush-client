@@ -1,5 +1,7 @@
 <?php namespace DeSmart\Uniqush\Request;
 
+use DeSmart\Uniqush\ValueObject\Message;
+
 class PushRequest implements RequestInterface
 {
     /**
@@ -13,24 +15,15 @@ class PushRequest implements RequestInterface
     protected $subscriber;
 
     /**
-     * @var string
+     * @var \DeSmart\Uniqush\ValueObject\Message
      */
     protected $message;
 
-    /**
-     * @var string
-     */
-    protected $sound;
-
-    /**
-     * @var string
-     */
-    protected $userDefinedParam;
-
-    public function __construct($serviceName, $subscriber)
+    public function __construct($serviceName, $subscriber, Message $message)
     {
         $this->serviceName = $serviceName;
         $this->subscriber = $subscriber;
+        $this->message = $message;
     }
 
     /**
@@ -50,47 +43,15 @@ class PushRequest implements RequestInterface
      */
     public function getQuery()
     {
-        $query = array(
+        return array_filter(array(
             'service' => $this->serviceName,
             'subscriber' => is_array($this->subscriber) ? join(',', $this->subscriber) : $this->subscriber,
-            'msg' => $this->message,
-        );
-
-        if (null !== $this->sound) {
-            $query['sound'] = $this->sound;
-        }
-
-        if (null !== $this->userDefinedParam) {
-            $query['userdefinedparam'] = $this->userDefinedParam;
-        }
-
-        return $query;
+            'msg' => $this->message->getContent(),
+            'sound' => $this->message->getSound(),
+            'badge' => $this->message->getBadge(),
+            'ttl' => $this->message->getTtl(),
+            'img' => $this->message->getImg(),
+        ));
     }
 
-    /**
-     * @param string $message
-     * @return void
-     */
-    public function setMessage($message)
-    {
-        $this->message = $message;
-    }
-
-    /**
-     * @param string $sound
-     * @return void
-     */
-    public function setSound($sound)
-    {
-        $this->sound = $sound;
-    }
-
-    /**
-     * @param string $userDefinedParam
-     * @return void
-     */
-    public function setUserDefinedParam($userDefinedParam)
-    {
-        $this->userDefinedParam = $userDefinedParam;
-    }
 }

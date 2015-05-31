@@ -2,15 +2,22 @@
 
 namespace spec\DeSmart\Uniqush\Request;
 
+use DeSmart\Uniqush\ValueObject\Message;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
 class PushRequestSpec extends ObjectBehavior
 {
 
-    function let()
+    function let(Message $message)
     {
-        $this->beConstructedWith('test', 'john');
+        $message->getContent()->willReturn('foo');
+        $message->getSound()->willReturn('default');
+        $message->getTtl()->willReturn(null);
+        $message->getImg()->willReturn(null);
+        $message->getBadge()->willReturn(null);
+
+        $this->beConstructedWith('test', 'john', $message);
     }
 
     function it_is_initializable()
@@ -26,65 +33,44 @@ class PushRequestSpec extends ObjectBehavior
 
     function it_sends_message_to_one_subscriber()
     {
-        $this->setMessage('foo');
-
         $this->getQuery()->shouldReturn(array(
             'service' => 'test',
             'subscriber' => 'john',
             'msg' => 'foo',
+            'sound' => 'default',
         ));
     }
 
-    function it_sends_to_many_subscribers()
+    function it_sends_to_many_subscribers(Message $message)
     {
-        $this->beConstructedWith('test', array('john', 'tom'));
-        $this->setMessage('foo');
+        $this->beConstructedWith('test', array('john', 'tom'), $message);
 
         $this->getQuery()->shouldReturn(array(
             'service' => 'test',
             'subscriber' => 'john,tom',
             'msg' => 'foo',
-        ));
-    }
-
-    function it_sends_message_to_one_subsciber_with_sound()
-    {
-        $this->setMessage('foo');
-        $this->setSound('default');
-
-        $this->getQuery()->shouldReturn(array(
-            'service' => 'test',
-            'subscriber' => 'john',
-            'msg' => 'foo',
             'sound' => 'default',
         ));
     }
 
-    function it_sends_message_to_one_subsciber_with_user_defined_param()
+    function it_return_complete_list_of_parameters(Message $message)
     {
-        $this->setMessage('foo');
-        $this->setUserDefinedParam('test_param');
+        $message->getContent()->willReturn('foo');
+        $message->getSound()->willReturn('alarm');
+        $message->getTtl()->willReturn(120);
+        $message->getImg()->willReturn('foo.png');
+        $message->getBadge()->willReturn(9);
+
+        $this->beConstructedWith('test', 'john', $message);
 
         $this->getQuery()->shouldReturn(array(
             'service' => 'test',
             'subscriber' => 'john',
             'msg' => 'foo',
-            'userdefinedparam' => 'test_param',
-        ));
-    }
-
-    function it_sends_message_to_one_subsciber_with_sound_and_user_defined_param()
-    {
-        $this->setMessage('foo');
-        $this->setSound('default');
-        $this->setUserDefinedParam('test_param');
-
-        $this->getQuery()->shouldReturn(array(
-            'service' => 'test',
-            'subscriber' => 'john',
-            'msg' => 'foo',
-            'sound' => 'default',
-            'userdefinedparam' => 'test_param',
+            'sound' => 'alarm',
+            'badge' => 9,
+            'ttl' => 120,
+            'img' => 'foo.png',
         ));
     }
 }
