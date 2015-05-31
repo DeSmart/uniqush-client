@@ -9,14 +9,13 @@ This library serves as [Uniqush](http://uniqush.org/) client for PHP.
 
 use \DeSmart\Uniqush\Client;
 use \DeSmart\Uniqush\Request\PushRequest;
-use \DeSmart\Uniqush\ValueObject\Message;
+use \DeSmart\Uniqush\Request\Message;
 
 $message = new Message('It is example message.');
 $request = new PushRequest('myService', ['alice', 'bob'], $message);
 
 $client = new \DeSmart\Uniqush\Client('http://uniqush.on.some.serv.er');
 $client->send($request);
-?>
 ```
 
 ## Debugging
