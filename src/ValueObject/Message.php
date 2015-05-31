@@ -32,8 +32,14 @@ class Message
      */
     protected $userParam;
 
-    public function __construct($content, $sound = "default", $ttl = null, $badge = null, $img = null, $userParam = null)
-    {
+    public function __construct(
+        $content,
+        $sound = "default",
+        $ttl = null,
+        $badge = null,
+        $img = null,
+        $userParam = null
+    ) {
         $this->content = $content;
         $this->sound = $sound;
         $this->ttl = $ttl;

@@ -53,5 +53,4 @@ class PushRequest implements RequestInterface
             'img' => $this->message->getImg(),
         ]);
     }
-
 }
