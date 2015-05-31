@@ -1,8 +1,0 @@
-" vim: ft=vim
-
-set tabstop=4
-set shiftwidth=4
-set expandtab
-
-let g:syntastic_php_checkers = ['php', 'phpcs']
-let g:syntastic_php_phpcs_args = "--standard=psr2"
