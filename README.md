@@ -25,7 +25,7 @@ Currently there's none. If needed please make PR.
 
 # Requests
 
-`Client` is just a wrapper for sending `RequestInterface` objects. Message is represented by Value Object - `Message`.
+`Client` is just a wrapper for sending `RequestInterface` objects. Message is represented by `Message` object.
 
 Requests define actions which can be done using Uniqush. Currently are implemented only those requests which we needed to use.
 
