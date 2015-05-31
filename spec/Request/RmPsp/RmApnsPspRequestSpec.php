@@ -26,11 +26,11 @@ class RmApnsPspRequestSpec extends ObjectBehavior
 
     function it_returns_query()
     {
-        $this->getQuery()->shouldReturn(array(
+        $this->getQuery()->shouldReturn([
             'service' => 'test',
             'pushservicetype' => 'apns',
             'cert' => 'pathToCert',
             'key' => 'qwe',
-        ));
+        ]);
     }
 }

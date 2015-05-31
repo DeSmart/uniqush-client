@@ -31,11 +31,11 @@ class SubscribeGcmDeviceRequest extends AbstractSubscribeDeviceRequest
      */
     public function getQuery()
     {
-        return array(
+        return [
             'service' => $this->serviceName,
             'subscriber' => $this->subscriber,
             'pushservicetype' => 'gcm',
             'regid' => $this->regId,
-        );
+        ];
     }
 }

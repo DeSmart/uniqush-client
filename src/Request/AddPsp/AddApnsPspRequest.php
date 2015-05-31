@@ -37,12 +37,12 @@ class AddApnsPspRequest extends AbstractAddPspRequest
      */
     public function getQuery()
     {
-        return array(
+        return [
             'service' => $this->serviceName,
             'pushservicetype' => 'apns',
             'cert' => $this->cert,
             'key' => $this->key,
             'sandbox' => $this->sandbox ? 'true' : 'false',
-        );
+        ];
     }
 }

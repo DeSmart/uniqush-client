@@ -43,7 +43,7 @@ class PushRequest implements RequestInterface
      */
     public function getQuery()
     {
-        return array_filter(array(
+        return array_filter([
             'service' => $this->serviceName,
             'subscriber' => is_array($this->subscriber) ? join(',', $this->subscriber) : $this->subscriber,
             'msg' => $this->message->getContent(),
@@ -51,7 +51,7 @@ class PushRequest implements RequestInterface
             'badge' => $this->message->getBadge(),
             'ttl' => $this->message->getTtl(),
             'img' => $this->message->getImg(),
-        ));
+        ]);
     }
 
 }

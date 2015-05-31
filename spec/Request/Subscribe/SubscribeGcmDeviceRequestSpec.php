@@ -26,11 +26,11 @@ class SubscribeGcmDeviceRequestSpec extends ObjectBehavior
 
     function it_returns_query()
     {
-        $this->getQuery()->shouldReturn(array(
+        $this->getQuery()->shouldReturn([
             'service' => 'test',
             'subscriber' => 'john',
             'pushservicetype' => 'gcm',
             'regid' => '123',
-        ));
+        ]);
     }
 }

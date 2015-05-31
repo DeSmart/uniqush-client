@@ -31,11 +31,11 @@ class UnsubscribeGcmDeviceRequest extends AbstractUnsubscribeDeviceRequest
      */
     public function getQuery()
     {
-        return array(
+        return [
             'service' => $this->service,
             'subscriber' => $this->subscriber,
             'pushservicetype' => 'gcm',
             'regid' => $this->regId,
-        );
+        ];
     }
 }

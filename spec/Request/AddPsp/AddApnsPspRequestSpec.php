@@ -26,25 +26,25 @@ class AddApnsPspRequestSpec extends ObjectBehavior
 
     function it_returns_query()
     {
-        $this->getQuery()->shouldReturn(array(
+        $this->getQuery()->shouldReturn([
             'service' => 'test',
             'pushservicetype' => 'apns',
             'cert' => 'pathToCert',
             'key' => 'qwe',
             'sandbox' => 'false',
-        ));
+        ]);
     }
 
     function it_returns_query_for_sandbox()
     {
         $this->beConstructedWith('test', 'pathToCert', 'qwe', true);
 
-        $this->getQuery()->shouldReturn(array(
+        $this->getQuery()->shouldReturn([
             'service' => 'test',
             'pushservicetype' => 'apns',
             'cert' => 'pathToCert',
             'key' => 'qwe',
             'sandbox' => 'true',
-        ));
+        ]);
     }
 }

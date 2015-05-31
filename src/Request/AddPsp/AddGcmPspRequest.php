@@ -31,11 +31,11 @@ class AddGcmPspRequest extends AbstractAddPspRequest
      */
     public function getQuery()
     {
-        return array(
+        return [
             'service' => $this->serviceName,
             'pushservicetype' => 'gcm',
             'projectid' => $this->projectId,
             'apikey' => $this->apiKey,
-        );
+        ];
     }
 }

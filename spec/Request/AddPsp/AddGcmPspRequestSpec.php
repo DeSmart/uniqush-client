@@ -26,11 +26,11 @@ class AddGcmPspRequestSpec extends ObjectBehavior
 
     function it_returns_query()
     {
-        $this->getQuery()->shouldReturn(array(
+        $this->getQuery()->shouldReturn([
             'service' => 'test',
             'pushservicetype' => 'gcm',
             'projectid' => '123',
             'apikey' => 'qwe',
-        ));
+        ]);
     }
 }

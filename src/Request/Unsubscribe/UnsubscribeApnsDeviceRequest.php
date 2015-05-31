@@ -31,11 +31,11 @@ class UnsubscribeApnsDeviceRequest extends AbstractUnsubscribeDeviceRequest
      */
     public function getQuery()
     {
-        return array(
+        return [
             'service' => $this->serviceName,
             'subscriber' => $this->subscriber,
             'pushservicetype' => 'apns',
             'devtoken' => $this->devToken,
-        );
+        ];
     }
 }

@@ -31,11 +31,11 @@ class RmApnsPspRequest extends AbstractRmPspRequest
      */
     public function getQuery()
     {
-        return array(
+        return [
             'service' => $this->serviceName,
             'pushservicetype' => 'apns',
             'cert' => $this->cert,
             'key' => $this->key,
-        );
+        ];
     }
 }

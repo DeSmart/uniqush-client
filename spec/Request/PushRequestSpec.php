@@ -33,24 +33,24 @@ class PushRequestSpec extends ObjectBehavior
 
     function it_sends_message_to_one_subscriber()
     {
-        $this->getQuery()->shouldReturn(array(
+        $this->getQuery()->shouldReturn([
             'service' => 'test',
             'subscriber' => 'john',
             'msg' => 'foo',
             'sound' => 'default',
-        ));
+        ]);
     }
 
     function it_sends_to_many_subscribers(Message $message)
     {
-        $this->beConstructedWith('test', array('john', 'tom'), $message);
+        $this->beConstructedWith('test', ['john', 'tom'], $message);
 
-        $this->getQuery()->shouldReturn(array(
+        $this->getQuery()->shouldReturn([
             'service' => 'test',
             'subscriber' => 'john,tom',
             'msg' => 'foo',
             'sound' => 'default',
-        ));
+        ]);
     }
 
     function it_return_complete_list_of_parameters(Message $message)
@@ -63,7 +63,7 @@ class PushRequestSpec extends ObjectBehavior
 
         $this->beConstructedWith('test', 'john', $message);
 
-        $this->getQuery()->shouldReturn(array(
+        $this->getQuery()->shouldReturn([
             'service' => 'test',
             'subscriber' => 'john',
             'msg' => 'foo',
@@ -71,6 +71,6 @@ class PushRequestSpec extends ObjectBehavior
             'badge' => 9,
             'ttl' => 120,
             'img' => 'foo.png',
-        ));
+        ]);
     }
 }

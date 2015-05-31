@@ -21,13 +21,13 @@ class ClientSpec extends ObjectBehavior
     function it_sends_requests(HttpClient $http, UniqushRequest $uniqushRequest, RequestInterface $request, EntityBodyInterface $responseBody)
     {
         $uniqushRequest->getUrl()->willReturn('/push');
-        $uniqushRequest->getQuery()->willReturn($query = array(
+        $uniqushRequest->getQuery()->willReturn($query = [
             'service' => 'test',
             'subscriber' => 'foo',
             'msg' => 'bar',
-        ));
+        ]);
 
-        $http->post('/push', array(), $query)->shouldBeCalled()
+        $http->post('/push', [], $query)->shouldBeCalled()
             ->willReturn($request);
 
         $http->send($request)->shouldBeCalled()
