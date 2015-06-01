@@ -2,7 +2,7 @@
 
 namespace spec\DeSmart\Uniqush\Request;
 
-use DeSmart\Uniqush\ValueObject\Message;
+use DeSmart\Uniqush\Request\Message;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 

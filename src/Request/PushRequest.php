@@ -1,7 +1,5 @@
 <?php namespace DeSmart\Uniqush\Request;
 
-use DeSmart\Uniqush\ValueObject\Message;
-
 class PushRequest implements RequestInterface
 {
     /**
@@ -15,7 +13,7 @@ class PushRequest implements RequestInterface
     protected $subscriber;
 
     /**
-     * @var \DeSmart\Uniqush\ValueObject\Message
+     * @var \DeSmart\Uniqush\Request\Message
      */
     protected $message;
 

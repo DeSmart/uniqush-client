@@ -1,4 +1,4 @@
-<?php namespace DeSmart\Uniqush\ValueObject;
+<?php namespace DeSmart\Uniqush\Request;
 
 class Message
 {
